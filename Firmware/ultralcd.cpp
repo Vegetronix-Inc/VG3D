@@ -1634,9 +1634,7 @@ static void lcd_support_menu()
   MENU_ITEM_BACK_P(PSTR(" " FW_VERSION_FULL));
   MENU_ITEM_BACK_P(PSTR(" Repo:" FW_REPOSITORY));
   MENU_ITEM_BACK_P(PSTR(" Hash:" FW_COMMIT_HASH));
-  MENU_ITEM_BACK_P(_n("prusa3d.com"));////MSG_PRUSA3D c=18
-  MENU_ITEM_BACK_P(_n("forum.prusa3d.com"));////MSG_PRUSA3D_FORUM c=18
-  MENU_ITEM_BACK_P(_n("help.prusa3d.com"));////MSG_PRUSA3D_HELP c=18
+  MENU_ITEM_BACK_P(_n("vegetronix.com"));////MSG_PRUSA3D c=18
   MENU_ITEM_BACK_P(STR_SEPARATOR);
   MENU_ITEM_BACK_P(PSTR(FILAMENT_SIZE));
   MENU_ITEM_BACK_P(PSTR(ELECTRONICS));
@@ -6930,28 +6928,34 @@ static FanCheck lcd_selftest_fan_auto(uint8_t _fan)
 
 	switch (_fan) {
 	case 0:
-        setExtruderAutoFanState(3); // hotend fan
+        hotendFanSetFullSpeed();
         lcd_selftest_setfan(0); // print fan off
         lcd_selftest_measure_fans(2, 18, 2);
-        setExtruderAutoFanState(0); // hotend fan off
+        hotendDefaultAutoFanState(); // hotend fan off
 		if (fan_speed[0] < failThr) {
+            SERIAL_ECHOPGM("failed 1.1 with fan speed:"); MYSERIAL.print(fan_speed[0]); SERIAL_ECHOPGM("; thresh:"); MYSERIAL.println(failThr);
 			return FanCheck::ExtruderFan;
 		}
-		if (fan_speed[0] >= printFanThr ) {
+		if (fan_speed[0] < printFanThr ) {
+            SERIAL_ECHOPGM("failed 1.2 with fan speed:"); MYSERIAL.print(fan_speed[0]); SERIAL_ECHOPGM("; thresh:"); MYSERIAL.println(printFanThr);
 			return FanCheck::SwappedFan;
 		}
+        SERIAL_ECHOPGM("Passed 1 with fan speed:"); MYSERIAL.println(fan_speed[0]);
 		break;
 
 	case 1:
-        lcd_selftest_setfan(255);
+        lcd_selftest_setfan(128);
         lcd_selftest_measure_fans(5, 18, 3);
         lcd_selftest_setfan(0);
         if (fan_speed[1] < failThr) {
+            SERIAL_ECHOPGM("failed 2.1 with fan speed:"); MYSERIAL.print(fan_speed[1]); SERIAL_ECHOPGM("; thresh:"); MYSERIAL.println(failThr);
             return FanCheck::PrintFan;
         }
-		if (fan_speed[1] < printFanThr) {
+		if (fan_speed[1] > printFanThr) {
+            SERIAL_ECHOPGM("failed 2.2 with fan speed:"); MYSERIAL.print(fan_speed[1]); SERIAL_ECHOPGM("; thresh:"); MYSERIAL.println(printFanThr);
 			return FanCheck::SwappedFan;
 		}
+        SERIAL_ECHOPGM("passed 2 with fan speed:"); MYSERIAL.println(fan_speed[1]);
 	}
 	return FanCheck::Success;
 }

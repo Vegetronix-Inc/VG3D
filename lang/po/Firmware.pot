@@ -852,7 +852,7 @@ msgstr ""
 #. MSG_WIZARD_WELCOME_SHIPPING c=20 r=12
 #: ../../Firmware/messages.cpp:136 ../../Firmware/ultralcd.cpp:3806
 msgid ""
-"Hi, I am your Original Prusa i3 printer. I will guide you through a short "
+"Hi, I am your Vegetronix VG3D printer. I will guide you through a short "
 "setup process, in which the Z-axis will be calibrated. Then, you will be "
 "ready to print."
 msgstr ""
@@ -860,7 +860,7 @@ msgstr ""
 #. MSG_WIZARD_WELCOME c=20 r=7
 #: ../../Firmware/messages.cpp:135 ../../Firmware/ultralcd.cpp:3810
 msgid ""
-"Hi, I am your Original Prusa i3 printer. Would you like me to guide you "
+"Hi, I am your Vegetronix VG3D printer. Would you like me to guide you "
 "through the setup process?"
 msgstr ""
 

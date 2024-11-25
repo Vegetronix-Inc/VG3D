@@ -1,13 +1,10 @@
-# Prusa Firmware MK3
+# Vegetronix VG3D Printer Firmware
 
-This repository contains the source code and the development versions of the firmware running on the [Original Prusa i3](https://prusa3d.com/) MK3S/MK3/MK2.5S/MK2.5 line of printers.
+This repository is used to develop and maintain the firmware for the [VG3D Printer](https://www.vegetronix.com/Products/3D-Printers).
 
-The latest official builds can be downloaded from [Prusa Drivers](https://www.prusa3d.com/drivers/). Pre-built development releases are also [available here](https://github.com/prusa3d/Prusa-Firmware/releases).
+This firmware is a fork of the [Prusa MK3](https://github.com/prusa3d/Prusa-Firmware) firmware, which is based on [Marlin 1.0.x](https://github.com/MarlinFirmware/Marlin/) by Scott Lahteine (@thinkyhead) et al., and is distributed under the terms of the [GNU GPL 3 license](LICENSE).
 
-The firmware for the Original Prusa i3 printers is proudly based on [Marlin 1.0.x](https://github.com/MarlinFirmware/Marlin/) by Scott Lahteine (@thinkyhead) et al. and is distributed under the terms of the [GNU GPL 3 license](LICENSE).
-
-This repository contains _development material only!_
-
+Build instructions from the Prusa documentation are included below, since the process is the same for this firmware. The original documents can be found in the Prusa MK3 firmware repository [here](https://github.com/prusa3d/Prusa-Firmware)
 
 # Build
 ## Linux
