@@ -846,7 +846,7 @@ int uart_putchar(char c, FILE *)
 void lcd_splash()
 {
 	lcd_clear(); // clears display and homes screen
-	lcd_printf_P(PSTR("\n Vegetronix VG-MK3S\n   vegetronix.com\n%20.20S"), PSTR(FW_VERSION));
+	lcd_printf_P(PSTR("\n Vegetronix VG3D\n   vegetronix.com\n%20.20S"), PSTR(FW_VERSION));
 }
 
 
